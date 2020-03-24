@@ -6,11 +6,11 @@ import pickle
 all_words = 0
 unique_words = 0
 dictionary = {}
+pattern = re.compile("(?<=[> \n\t])*([a-z0-9][a-z0-9']*-?[a-z0-9][a-z0-9']+)(?=[< \n\t])*")
 for i in range(1, len(sys.argv)):
     print(sys.argv[i])
     with open(sys.argv[i]) as f_reader:
         data = f_reader.read().lower()
-        pattern = re.compile("(?<=[> \n\t])*([a-z0-9][a-z0-9']*-?[a-z0-9][a-z0-9']+)(?=[< \n\t])*")
         find = re.findall(pattern, data)
         all_words += len(find)
         for word in find:
