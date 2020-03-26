@@ -2,6 +2,9 @@ import re
 import sys
 import json
 import pickle
+import time
+
+start_time = time.time()
 
 all_words = 0
 dictionary = {}
@@ -31,3 +34,5 @@ print('Quantity of unique words: ' + str(unique_words))
 
 f_writer.close()
 bf_writer.close()
+
+print('Time: ' + str(time.time() - start_time))
