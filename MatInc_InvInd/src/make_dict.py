@@ -49,14 +49,8 @@ def making_dictionary():
     '''This creates incidence matrix out of inverted index'''
     #dictionary = make_matrix(dictionary, files)
 
-    f_writer = open('../result/output.txt', 'w')
-    f_writer.write(dictionary.to_str())
-
     print('Quantity of words: ' + str(all_words))
     print('Quantity of unique words: ' + str(unique_words))
-
-    f_writer.close()
-
     print('Time: ' + str(time.time() - start_time))
 
     return dictionary
