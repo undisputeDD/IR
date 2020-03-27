@@ -57,4 +57,8 @@ def making_dictionary():
 
 
 if __name__ == '__main__':
-    making_dictionary()
+    dictionary = making_dictionary()
+
+    f_writer = open('../result/output.txt', 'w')
+    f_writer.write(dictionary.to_str())
+    f_writer.close()
