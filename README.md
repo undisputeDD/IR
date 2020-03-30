@@ -1,6 +1,8 @@
 # IR
 Information Retrieval
 
+----------------------------
+
 Dictionary:
 	Making a dictionary out of 10 resource documents(files)
 
