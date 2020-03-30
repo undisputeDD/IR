@@ -15,13 +15,7 @@ def search(dictionary, files):
                         break
                     result.append(current)
             elif elem == 'NOT':
-                while len(op_stack) != 0:
-                    current = op_stack.pop()
-                    if current == 'OR' or current == 'AND' or current == '(' or current == 'NOT':
-                        op_stack.append(current)
-                        break
-                    result.append(current)
-
+                result.append(current)
                 op_stack.append('NOT')
             elif elem == 'AND':
                 while len(op_stack) != 0:
@@ -47,6 +41,9 @@ def search(dictionary, files):
             result.append(op_stack.pop())
         #for element in result:
         #   print('[' + element + ']', end=' ')
+
+        # result - list of correctly converted postfix query.
+
         query = input("\nEnter your query: ")
 
 
