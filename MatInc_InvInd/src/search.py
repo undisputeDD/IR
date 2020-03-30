@@ -15,7 +15,6 @@ def search(dictionary, files):
                         break
                     result.append(current)
             elif elem == 'NOT':
-                result.append(current)
                 op_stack.append('NOT')
             elif elem == 'AND':
                 while len(op_stack) != 0:
