@@ -1,8 +1,8 @@
 from MatInc_InvInd.src.make_dict import making_dictionary
 from MatInc_InvInd.src.search import search
 
-dictionary = making_dictionary()
-search(dictionary)
+dictionary, files = making_dictionary()
+search(dictionary, files)
 
 
 f_writer = open('../result/output.txt', 'w')

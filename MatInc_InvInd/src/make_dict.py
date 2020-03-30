@@ -53,7 +53,7 @@ def making_dictionary():
     print('Quantity of unique words: ' + str(unique_words))
     print('Time: ' + str(time.time() - start_time))
 
-    return dictionary
+    return dictionary, files
 
 
 if __name__ == '__main__':
