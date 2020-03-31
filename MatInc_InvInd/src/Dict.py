@@ -4,11 +4,11 @@ class Dict:
 
     def add_word(self, word):
         if word not in self.dict:
-            self.dict[word] = []
+            self.dict[word] = set()
 
     def add_file(self, word, fileID):
         if fileID not in self.dict[word]:
-            self.dict[word].append(fileID)
+            self.dict[word].add(fileID)
 
     def get_word_fileids(self, word):
         return self.dict[word]
@@ -24,10 +24,12 @@ class Dict:
                 result += ' '
             result += '['
             rem_list = self.dict[word]
-            for i in range(0, len(rem_list)):
-                result += str(rem_list[i])
+            i = 0
+            for elem in rem_list:
+                result += str(elem)
                 if i != len(rem_list) - 1:
                     result += ', '
+                i += 1
             result += ']\n'
 
         return result

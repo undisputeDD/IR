@@ -6,4 +6,4 @@ class Files:
         self.files[fileID] = file
 
     def get_ids(self):
-        return self.files.keys()
+        return set(self.files.keys())
