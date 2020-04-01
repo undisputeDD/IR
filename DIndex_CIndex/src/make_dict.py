@@ -3,6 +3,7 @@ import sys
 import time
 from DIndex_CIndex.src.File import Files
 from DIndex_CIndex.src.Dict import Dict
+from DIndex_CIndex.src.Index import Index
 
 
 def make_matrix(dictionary, files):
@@ -87,7 +88,33 @@ def making_d_index():
 
 
 def making_c_index():
-    pass
+    start_time = time.time()
+
+    all_words = 0
+    fileID = 1
+    index = Index()
+    files = Files()
+    pattern = re.compile("(?<=[> \n\t])*([a-z0-9][a-z0-9']*-?[a-z0-9][a-z0-9']*)(?=[< \n\t])*")
+    for i in range(1, len(sys.argv)):
+        print(sys.argv[i])
+        with open(sys.argv[i]) as f_reader:
+            files.add_file(fileID, f_reader)
+            data = f_reader.read().lower()
+            find = re.findall(pattern, data)
+            all_words += len(find)
+            i = 1
+            for word in find:
+                index.add_word(word, fileID, i)
+                i += 1
+        fileID += 1
+
+    unique_words = len(index.dict.keys())
+
+    print('Quantity of words: ' + str(all_words))
+    print('Quantity of unique words: ' + str(unique_words))
+    print('Time: ' + str(time.time() - start_time))
+
+    return index, files
 
 
 if __name__ == '__main__':
