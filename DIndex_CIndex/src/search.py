@@ -1,5 +1,6 @@
 from DIndex_CIndex.src.File import File
 
+
 def search(index, files):
     query = input("Enter your query: ")
 
