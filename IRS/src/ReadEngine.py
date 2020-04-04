@@ -23,8 +23,23 @@ class ReadEngine:
             file = open(data_file)
             data = file.read().lower()
             data = re.findall(pattern, data)
+            '''DOUBLE/COORD'''
             all_terms += len(data)
+            #all_terms += len(data) - 1
             coord = 1
+
+            """for i in range(len(data) - 1):
+                term = data[i] + ' ' + data[i + 1]
+                if term not in self.word_file.index.keys():
+                    '''If there is no term in index(and Posting List consequently), we are creating a new one'''
+                    post_list = PostList()
+                    post_list.add_file_coord(fileID, coord)
+
+                    self.word_file.index[term] = post_list
+                else:
+                    self.word_file.index[term].add_file_coord(fileID, coord)
+                coord += 1"""
+
             for term in data:
                 if term not in self.word_file.index.keys():
                     '''If there is no term in index(and Posting List consequently), we are creating a new one'''
@@ -33,10 +48,9 @@ class ReadEngine:
 
                     self.word_file.index[term] = post_list
                 else:
-                    '''When we have term in index, we check if there was current fileID in Posting List of a term
-                       If not, we add it with current coord. If yes, we just add coord.(It`s made in PostList)'''
                     self.word_file.index[term].add_file_coord(fileID, coord)
                 coord += 1
+
             file.close()
             fileID += 1
 
